@@ -4,7 +4,7 @@ transformation superclass(inout model : uml);
 
 main()
 {
-	model.objects()![Class].map addExtend();
+	model.objects()[Class].map addExtend();
 }
 
 mapping inout Class::addExtend()
