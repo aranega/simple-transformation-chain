@@ -1,0 +1,23 @@
+modeltype uml uses uml('http://www.eclipse.org/uml2/4.0.0/UML');
+
+transformation superclass(inout model : uml);
+
+main()
+{
+	model.objects()![Class].map toDataBase();
+}
+
+mapping inout Class::addExtend()
+{
+  self.superClass += model.objects()![Model].map addSuperClass();
+}
+
+mapping inout Model::addSuperClass() : Class
+{
+  name := 'SuperClass';
+  isAbstract := true;
+
+  end {
+    self.packagedElement += result;
+  }
+}
