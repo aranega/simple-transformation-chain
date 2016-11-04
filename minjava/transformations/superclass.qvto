@@ -8,6 +8,10 @@ main()
 }
 
 mapping inout Class::addExtend()
+when
+{
+  self.superClass->isEmpty()
+}
 {
   self.superClass += model.objects()![Model].map addSuperClass();
 }
