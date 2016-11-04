@@ -1,5 +1,6 @@
 <generator>
 	<name>minjava</name>
 	<m2m name="superclass.qvto" bypass="false"/>
+	<m2m name="addID.qvto" bypass="false"/>
 	<m2t name="minjava.mtl" />
 </generator>
