@@ -1,0 +1,31 @@
+modeltype uml uses uml('http://www.eclipse.org/uml2/4.0.0/UML');
+
+transformation superclass(inout model : uml);
+
+main()
+{
+	model.objects()[Class].map addID();
+}
+
+mapping inout Class::addID()
+when
+{
+  not self.ownedAttribute->exists(name = 'id')
+}
+{
+  self.ownedAttribute += self.map createID();
+}
+
+mapping Class::createID() : Property
+{
+  name := 'id';
+  type := model.objects()![Model].map longType();
+}
+
+mapping inout Model::longType() : DataType
+{
+  name := 'Long';
+  end {
+    self.packagedElement += result;
+  }
+}
